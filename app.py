@@ -42,5 +42,9 @@ if st.button("Predict"):
 
         if label == "Spam":
             st.error(f"🚨 {label}")
+            st.write(f"Confidence: {confidence:.2%}")
+            st.progress(confidence)
         else:
             st.success(f"✅ {label}")
+            st.write(f"Confidence: {confidence:.2%}")
+            st.progress(confidence)
