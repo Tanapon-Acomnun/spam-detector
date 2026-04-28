@@ -3,13 +3,10 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 # Load model
-MODEL_NAME = "distilbert-base-uncased"
-
+MODEL_NAME = "SoftSkinz/spam-detector-model"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForSequenceClassification.from_pretrained(
-    MODEL_NAME,
-    num_labels=2
-)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 model.eval()
