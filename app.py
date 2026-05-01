@@ -19,10 +19,18 @@ def predict(text):
         outputs = model(**inputs)
 
     probs = torch.nn.functional.softmax(outputs.logits, dim=1)
-    label = "Spam" if torch.argmax(probs)==1 else "Not Spam"
-    confidence = float(torch.max(probs))
+    spam_prob = probs[0][1].item()
 
-    return label, confidence
+    # 🔥 KEY FIX HERE
+    if spam_prob > 0.7:
+        label = "Spam"
+    else:
+        label = "Not Spam"
+
+    return {
+        "label": label,
+        "confidence": spam_prob
+    }
 
 # UI
 st.set_page_config(page_title="Spam Classifier", page_icon="📧")
