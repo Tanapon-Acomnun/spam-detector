@@ -17,7 +17,13 @@ model.eval()
 # =========================
 # PREDICTION FUNCTION (FIXED)
 # =========================
+def preprocess_input(text):
+    text = text.replace("Subject:", "")
+    text = text.replace("Body:", "")
+    return text.strip()
+
 def predict(text, threshold=0.7):
+    text = preprocess_input(text)
     inputs = tokenizer(
         text,
         return_tensors="pt",
