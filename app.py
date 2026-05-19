@@ -6,7 +6,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 # =========================
 # CONFIG
 # =========================
-MODEL_NAME = "SoftSkinz/spam-detector-model"
+MODEL_NAME = "SoftSkinz/new-spam-detector"
 
 MAX_LEN = 128
 TEMPERATURE = 2.0
